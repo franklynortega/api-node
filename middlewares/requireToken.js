@@ -18,7 +18,8 @@ export const requireToken = (req, res, next) => {
             "invalid signature": "La firma no es válida",
             "jwt expired": "Token expirado",
             "invalid token": "Token invalido",
-            "No Bearer": "Debes usar el formato Bearer"
+            "No Bearer": "Debes usar el formato Bearer",
+            "jwt malformed": "JWT formato no válido"
         };
 
         return res
