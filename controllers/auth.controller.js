@@ -1,5 +1,5 @@
 import { User } from "../models/Users.js";
-import jwt from 'jsonwebtoken'; 
+import { generateToken } from "./utils/tokenManager.js";
 
 export const register = async(req, res) => {
    const {email, password} = req.body
@@ -43,9 +43,9 @@ export const login = async(req, res) => {
         }
 
         // Generar JWT
-        const token = jwt.sign({uid: user.id}, process.env.JWT_SECRET); 
+        const {token, expiresIn} = generateToken(user.id) 
 
-        return res.json({ token });
+        return res.json({ token, expiresIn });
         
 
     } catch (error) {
@@ -53,3 +53,14 @@ export const login = async(req, res) => {
         return res.status(500).json({error: "Error de Servidor"});
     }
 };
+
+export const infoUser = async(req, res) => {
+
+    try {
+        const user = await User.findById(req.uid).lean()
+        return res.json({ email: user.email })
+    } catch (error) {
+        return res.status(500).json({error: "Interna Error"})
+    }
+
+}

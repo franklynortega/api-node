@@ -16,4 +16,5 @@ Content-Type: application/json
     "password": "123123123"
 }
 ###  
-
+GET http://localhost:5001/api/v1/auth/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmMzNzg0ODEwOGNmODlmMTg4ZmYzYTUiLCJpYXQiOjE2NTc0MDg4ODgsImV4cCI6MTY1NzQwOTc4OH0.cQmZapSAz8taDtHP2Us5OVAVl4THdVohxV5icptKgww
